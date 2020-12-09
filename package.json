@@ -1,0 +1,28 @@
+{
+  "name": "full-stack-open-part3",
+  "version": "1.0.0",
+  "description": "Full stack open course - Part 3: Programming a server with NodeJS and Express - Exercises",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "start": "node index.js",
+    "dev": "nodemon index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/victorpinon/Full-stack-open-part3.git"
+  },
+  "author": "Víctor Piñón",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/victorpinon/Full-stack-open-part3/issues"
+  },
+  "homepage": "https://github.com/victorpinon/Full-stack-open-part3#readme",
+  "dependencies": {
+    "express": "^4.17.1"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.6"
+  }
+}
