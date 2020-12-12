@@ -1,4 +1,4 @@
-POST http://localhost:3001/api/persons HTTP/1.1
+POST https://warm-refuge-66239.herokuapp.com/api/persons HTTP/1.1
 content-type: application/json
 
 {
