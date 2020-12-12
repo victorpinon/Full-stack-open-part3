@@ -1,7 +1,10 @@
+import Person from "./models/person.js"
 import express from "express"
+import dotenv from "dotenv"
 import morgan from "morgan"
 import cors from "cors"
 
+dotenv.config()
 const app = express()
 app.use(express.json())
 app.use(cors())
@@ -36,7 +39,9 @@ let persons = [
 const generateId = () => (Math.floor(Math.random() * 1000000))
 
 app.get('/api/persons', (request, response) => {
-    response.json(persons)
+    Person.find({}).then(result => {
+        response.json(result)
+    })
 })
 
 app.get('/api/persons/:id', (request, response) => {
@@ -96,7 +101,7 @@ app.delete('/api/persons/:id', (request, response) => {
     response.status(204).end()
 })
 
-const PORT = process.env.PORT || 3001
+const PORT = process.env.PORT
 app.listen(PORT, () => {
-    console.log(`Server running on port ${PORT}`)
+  console.log(`Server running on port ${PORT}`)
 })
