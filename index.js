@@ -39,8 +39,8 @@ let persons = [
 const generateId = () => (Math.floor(Math.random() * 1000000))
 
 app.get('/api/persons', (request, response) => {
-    Person.find({}).then(result => {
-        response.json(result)
+    Person.find({}).then(people => {
+        response.json(people)
     })
 })
 
@@ -77,21 +77,22 @@ app.post('/api/persons', (request, response) => {
             error: 'number missing' 
         })
     }
-    else if (persons.find(p => p.name === body.name)) {
+    /*else if (persons.find(p => p.name === body.name)) {
         return response.status(409).json({ 
             error: 'name must be unique' 
         })
-    }
+    }*/
 
-    const person = {
+    const person = new Person({
         id: generateId(),
         name: body.name,
         number: body.number
-    }
-  
-    persons = persons.concat(person)
-  
-    response.json(person)
+    })
+
+    person.save().then(savedPerson => {
+        response.json(savedPerson)
+    })
+
 })
 
 app.delete('/api/persons/:id', (request, response) => {
